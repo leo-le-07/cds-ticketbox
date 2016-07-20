@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-block">
+    <h3 class="card-title"></h3>
+    <div class="card-text">
+      <%= form_tag("/sessions", method: "post") do %>
+        <fieldset class="form-group">
+          <%= label_tag "email", "Email" %>
+          <%= email_field_tag "email", nil, class: "form-control", placeholder: "" %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= label_tag "password", "Mật khẩu" %>
+          <%= password_field_tag "password", nil, class: "form-control" %>
+        </fieldset>
+        <%= submit_tag "Đăng nhập", class: "btn btn-primary-outline" %>
+        <a href="" id="sign_in_fb"><img src="/assets/FB-f-Logo__blue_50.png" alt="fb-logo" style="width: 36px;margin-left: 16px;margin-right: 16px;"></a>
+        <div style="margin-top: 10px;"><%= link_to "Chưa có tài khoản", "/signup" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

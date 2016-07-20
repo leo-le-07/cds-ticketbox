@@ -26,7 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap', '~> 4.0.0.alpha1'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bcrypt', '~> 3.1.7'
+gem 'rails-assets-tether', '~> 1.1', '>= 1.1.1'
 gem 'simple_form'
 gem 'quiet_assets'
 gem 'better_errors', group: :development

@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>eTicket</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,700&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,16 +12,34 @@
   <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
     <a class="navbar-brand" href="<%= root_path %>">eTicket</a>
     <ul class="nav navbar-nav">
+      <% unless current_user %>
+        <li class="nav-item">
+          <%= link_to "Đăng nhập", login_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Đăng ký", signup_path, class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
-        <a class="nav-link" href="#">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Sign Up</a>
+        <%= link_to "Tạo sự kiện", new_event_path, class: "nav-link btn btn-primary" %>
       </li>
     </ul>
+    <% if current_user %>
+      <div class="pull-xs-right">
+        <div class="btn-group">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.name %>
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to "Logout", "/logout", class: "dropdown-item" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </nav>
 
-<%= yield %>
+  <%= flash_messages %>
+  <%= yield %>
 
 </body>
 </html>

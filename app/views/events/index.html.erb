@@ -1,8 +1,8 @@
 <div class='events-header' style='background-image: url(<%= header_background_image_url %>)'>
   <div class="container">
-    <h2> Discover upcoming events </h2>
+    <h2> Khám phá các sự kiện nổi bật </h2>
     <form>
-      <input type="text" class="form-control" name="search" placeholder="Search for events, shows, courses...">
+      <input type="text" class="form-control" name="search" placeholder="Tìm kiếm các sự kiện, khóa học...">
     </form>
   </div>
 </div>
@@ -12,7 +12,7 @@
         <% g.compact.each do |e| %>
             <%= render partial: 'card', locals: {event: e} %>
         <% end %>
-      </div>  
+      </div>
     <% end %>
   </div>
 </div>
