@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :deny_anonymous_user, only: [:new]
 
   def index
-    @events = Event.all
+    @events = current_user.events.all
   end
 
   def show

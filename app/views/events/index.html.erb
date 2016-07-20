@@ -1,17 +1,12 @@
-<div class='events-header' style='background-image: url(<%= header_background_image_url %>)'>
-  <div class="container">
-    <h2> Khám phá các sự kiện nổi bật </h2>
-    <form>
-      <input type="text" class="form-control" name="search" placeholder="Tìm kiếm các sự kiện, khóa học...">
-    </form>
-  </div>
+<div class="container header pad-top-80">
+  <h2> Sự kiện đã tạo </h2>
 </div>
-<div class="container-fluid events-list">
-    <% @events.in_groups_of(3) do |g| %>
-      <div class="row">
-        <% g.compact.each do |e| %>
-            <%= render partial: 'card', locals: {event: e} %>
-        <% end %>
+<div class="container-fluid body events-list">
+  <% @events.in_groups_of(3) do |g| %>
+    <div class="row">
+      <% g.compact.each do |e| %>
+        <%= render partial: 'card', locals: {event: e} %>
+      <% end %>
       </div>
     <% end %>
   </div>

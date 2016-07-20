@@ -3,7 +3,7 @@
 #
 
 # User
-User.create(name: "Leo Le", email: "coder.leo.le@gmail.com", password: "123")
+user1 = User.create(name: "Leo Le", email: "coder.leo.le@gmail.com", password: "123")
 
 # Create Regions
 ['Ho Chi Minh', 'Ha Noi', 'Binh Thuan', 'Da Nang', 'Lam Dong'].each do |r|
@@ -24,6 +24,8 @@ dalat = Venue.create({
 })
 
 e = Event.create({
+  owner_id: user1.id,
+  status: 1,
   name: 'Việt Nam Thử Thách Chiến Thắng',
   starts_at: DateTime.parse('Fri, 11 Mar 2016 7:00 AM+0700'),
   ends_at: DateTime.parse('Sun, 13 Mar 2016 3:00 PM+0700'),
@@ -52,6 +54,8 @@ dan_venue = Venue.create({
 })
 
 e = Event.create({
+  owner_id: user1.id,
+  status: 1,
   name: 'Cảm ơn Đời - Live Concert Đan Trường',
   venue: dan_venue,
   category: Category.find_by(name: 'Entertainment'),
@@ -135,6 +139,8 @@ gap = Venue.create({
   })
 
 e = Event.create({
+  owner_id: user1.id,
+  status: 1,
   name: 'Merry Christmas Never Alone',
   starts_at: DateTime.parse('Thu, 24 Dec 2015, 8:00 PM+0700'),
   ends_at: DateTime.parse('Thu, 24 Dec 2015, 11:00 PM+0700'),

@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
 
-  resources :users
+  resources :users do
+    resources :events
+  end
   resources :sessions, only: [:create, :index]
 
-  root 'events#index'
+  root 'home#index'
 
   resources :events do
     resources :tickets

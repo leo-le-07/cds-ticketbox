@@ -3,16 +3,9 @@
     <div class="card">
       <img class="card-img-top" src="<%= event.hero_image_url %>">
       <div class="card-block">
-        <h4 class="card-title"><%= event.name %>
-          <% if event.draft? %>
-             <span class="label label-warning label-pill">Nháp</span>
-          <% end %>
-        </h4>
+        <h4 class="card-title"><%= event.name %></h4>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
         </p>
-      </div>
-      <div class="card-block">
-        <a href="#" class="card-link"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i> Sửa</a>
       </div>
     </div>
   <% end %>
