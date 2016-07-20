@@ -39,9 +39,14 @@ gem 'font-kit-rails', '~> 1.2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.2'
+  gem 'guard-livereload', '~> 2.5'
 end
 
 group :development do
