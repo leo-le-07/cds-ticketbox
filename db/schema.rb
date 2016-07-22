@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722010444) do
+ActiveRecord::Schema.define(version: 20160722155928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20160722010444) do
     t.integer  "max_quantity"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.integer  "min_in_order", default: 1
+    t.integer  "min_in_order", default: 0
     t.integer  "max_in_order", default: 10
   end
 
