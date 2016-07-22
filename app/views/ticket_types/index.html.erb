@@ -1,0 +1,21 @@
+<div class="event ticket">
+  <div class="slide-bar">
+    <%= render partial: '/events/slide_bar', locals: {event: @event} %>
+  </div>
+  <div class="body">
+    <div class="panel-ticket-info">
+      <div style="margin-bottom: 16px;">
+        <h2>Danh sách loại vé</h2>
+      </div>
+      <%= render @ticket_types %>
+      <div class="btn-grp">
+        <%= link_to new_event_ticket_type_path(@event), class: "custom-btn" do %>
+          <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Tạo thêm loại vé mới
+        <% end %>
+      </div>
+      <div class="btn-grp">
+        <%= link_to "Hoàn thành", nil, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+.ticket {
+  .body {
+    .panel-ticket-info {
+      padding: 70px 80px 90px;
+
+      .card {
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 7px 7px 0px 0px;
+        border-radius: 7px 7px 0px 0px;
+      }
+
+      .ticket-name {
+        background: #808080;
+        color: #e3e7ea;
+        padding: 0.8rem 1.25rem;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 7px 7px 0px 0px;
+        border-radius: 7px 7px 0px 0px;
+        h4 {
+          margin-bottom: 0;
+          display: inline-block;
+        }
+        .pull-xs-right {
+          margin-right: 0;
+        }
+      }
+      a.custom-btn {
+        color: #5cb85c;
+        &:hover{
+          color: #449d44;
+          text-decoration: none;
+        }
+      }
+      a {
+        color: #e3e7ea;
+        &:hover{
+          color: #e3e7ea;
+          text-decoration: none;
+        }
+      }
+
+      .ticket-row {
+        display: table;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+
+        .ticket-first-col {
+          display: table-cell;
+          width: 250px;
+          color: grey;
+        }
+
+        .ticket-second-col {
+          text-align: right;
+          min-width: 100px;
+        }
+      }
+
+      .btn {
+        width: 49%;
+        line-height: 40px;
+        font-size: 1.5rem;
+      }
+
+      .btn-grp {
+        margin-top: 45px;
+        text-align: center;
+      }
+    }
+  }
+}
+a.custom-btn {
+  color: #5cb85c;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 40px;
+  &:hover {
+    color: #449d44;
+    text-decoration: none;
+  }
+}

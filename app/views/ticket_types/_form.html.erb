@@ -1,0 +1,24 @@
+<div>
+  <%= form_for [@event, @ticket_type] do |f| %>
+    <fieldset class="form-group">
+      <%= f.label :name, "Tên loại vé" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "" %>
+    </fieldset>
+    <fieldset class="form-group" style="width: 40%; float:left; margin-right: 20%;">
+      <%= f.label :price, "Giá vé" %>
+      <%= f.text_field :price, class: "form-control", placeholder: "" %>
+    </fieldset>
+    <fieldset class="form-group" style="width: 40%;">
+      <%= f.label :max_quantity, "Tổng số lượng vé" %>
+      <%= f.text_field :max_quantity, class: "form-control", placeholder: "" %>
+    </fieldset>
+    <fieldset class="form-group" style="width: 40%; float:left; margin-right: 20%;">
+      <%= f.label :min_in_order, "Số lượng vé tối thiểu trên một đơn hàng" %>
+      <%= f.text_field :min_in_order, class: "form-control", placeholder: "" %>
+    </fieldset>
+    <fieldset class="form-group" style="width: 40%;">
+      <%= f.label :max_in_order, "Số lượng vé tối đa trên một đơn hàng" %>
+      <%= f.text_field :max_in_order, class: "form-control", placeholder: "" %>
+    </fieldset>
+  <% end %>
+</div>

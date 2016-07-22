@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-block ticket-name">
+    <h4 class="card-title"><%= ticket_type.name %></h4>
+    <span class="pull-xs-right">
+      <%= link_to edit_event_ticket_type_path(ticket_type.event, ticket_type), style: "margin-right: 20px;" do %>
+        <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to event_ticket_type_path(ticket_type.event, ticket_type), method: :delete, data: {confirm: "Bạn muốn xóa loại vé này?"} do %>
+        <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+      <% end %>
+    </span>
+  </div>
+  <div class="card-block">
+    <div class="ticket-row">
+      <div class="ticket-first-col">Giá vé:</div>
+      <div class="ticket-second-col"><%= format_currency(ticket_type.price) %></div>
+    </div>
+    <div class="ticket-row">
+      <div class="ticket-first-col">Tổng số lượng vé:</div>
+      <div class="ticket-second-col"><%= ticket_type.max_quantity %></div>
+    </div>
+    <div class="ticket-row">
+      <div class="ticket-first-col">Số vé tối thiểu trong một đơn hàng:</div>
+      <div class="ticket-second-col"><%= ticket_type.min_in_order %></div>
+    </div>
+    <div class="ticket-row">
+      <div class="ticket-first-col">Số vé tối đa trong một đơn hàng:</div>
+      <div class="ticket-second-col"><%= ticket_type.max_in_order %></div>
+    </div>
+  </div>
+</div>

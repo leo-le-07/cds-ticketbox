@@ -9,6 +9,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def edit
+    @event = current_user.events.find(params[:id])
+  end
+
   def new
     @event = Event.new
   end

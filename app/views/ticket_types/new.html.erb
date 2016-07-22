@@ -1,0 +1,16 @@
+<div class="event ticket">
+  <div class="slide-bar">
+    <%= render partial: '/events/slide_bar', locals: {event: @event} %>
+  </div>
+  <div class="body">
+    <div class="panel-ticket-info">
+      <div style="margin-bottom: 16px;">
+        <h2>Thêm loại vé mới</h2>
+      </div>
+      <%= render 'form' %>
+      <div class="btn-grp">
+        <%= link_to "Lưu", nil, class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<ul class="nav nav-pills nav-stacked">
+  <li class="nav-item">
+    <%= link_to "Thông tin sự kiện", edit_user_event_path(current_user, event), class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "Thông tin vé", event_ticket_types_path(event), class: "nav-link" %>
+  </li>
+</ul>

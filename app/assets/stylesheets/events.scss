@@ -1,0 +1,80 @@
+.event {
+  .slide-bar {
+    position: fixed;
+    left: 0;
+    top: 56px;
+    bottom: 0;
+    width: 20%;
+
+    .nav.nav-pills.nav-stacked {
+      height: 100vh;
+      background: #303b46;
+      color: #e9edf0;
+
+      .nav-link.active {
+        background: #dadada;
+        color: #303b46;
+      }
+      .nav-link {
+        height: 80px;
+        padding-top: 26px;
+        font-size: 1.3rem;
+        font-weight: 200;
+        border-radius: 0;
+      }
+      .nav-item {
+        a {
+          color: #e9edf0;
+        }
+        &:hover {
+          background: #dadada;
+          color: #303b46;
+          a {
+            color: #303b46;
+          }
+        }
+      }
+    }
+  }
+
+  .body {
+    width: 80%;
+    margin-left: 20%;
+    overflow: auto;
+
+    .status {
+      padding-right: .9em;
+      padding-left: .9em;
+      font-size: 1.7rem;
+      position: absolute;
+      right: 85px;
+      top: 380px;
+    }
+
+    label {
+      font-size: 1.3rem;
+    }
+
+    .cover-event {
+      box-shadow: -3px 20px 13px #888888;
+      .card-img-top {
+        width: 100%;
+      }
+    }
+
+    .panel-event-info {
+      padding: 70px 80px 90px;
+
+      .btn {
+        width: 49%;
+        line-height: 40px;
+        font-size: 1.5rem;
+      }
+
+      .btn-grp {
+        margin-top: 45px;
+        text-align: center;
+      }
+    }
+  }
+}
