@@ -1,0 +1,61 @@
+<div class="cover-event">
+  <img class="card-img-top" src="<%= event.hero_image_url %>">
+</div>
+<% if event.draft? %>
+  <div class="">
+    <span class="label label-warning label-pill status">Nháp</span>
+  </div>
+<% end %>
+<div class="panel-event-info">
+  <%= form_for event do |f| %>
+    <fieldset class="form-group">
+      <%= f.label :name, "Tên sự kiện" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "" %>
+    </fieldset>
+    <%= f.fields_for :venue do |v| %>
+      <fieldset class="form-group">
+        <%= v.label :name, "Tên địa điểm" %>
+        <%= v.text_field :name, class: "form-control", placeholder: "" %>
+      </fieldset>
+      <fieldset class="form-group">
+        <%= v.label :full_address, "Địa điểm cụ thể" %>
+        <%= v.text_field :full_address, class: "form-control", placeholder: "" %>
+      </fieldset>
+
+      <%= v.fields_for :region do |r| %>
+        <fieldset class="form-group">
+          <%= r.label :id, "Vùng" %>
+          <%= r.select(:id, options_for_select(Region.all.collect {|region| [region.name, region.id]}, event.venue.region.id), {}, { class: "form-control"}) %>
+        </fieldset>
+      <% end %>
+    <% end %>
+    <fieldset class="form-group" style="width: 49%; float: left;">
+      <%= f.label :starts_at, "Thời gian bắt đầu" %>
+      <br>
+      <%= f.datetime_select :starts_at, class:"form-control" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :ends_at, "Thời gian kết thúc" %>
+      <br>
+      <%= f.datetime_select :ends_at, class:"form-control" %>
+    </fieldset>
+    <%= f.fields_for :category do |c| %>
+      <fieldset class="form-group">
+        <%= c.label :name, "Loại sự kiện" %>
+        <%= c.select(:id, options_for_select(Category.all.collect {|category| [category.name, category.id]}, event.category.id), {}, { class: "form-control"}) %>
+      </fieldset>
+    <% end %>
+    <fieldset class="form-group">
+      <%= f.label :extended_html_description, "Mô tả thông tin sự kiện" %>
+      <%= f.text_area :extended_html_description, class: "form-control", placeholder: "", rows: 10%>
+    </fieldset>
+    <div class="btn-grp">
+      <%= link_to nil, class: "custom-btn" do %>
+        Công khai sự kiện
+      <% end %>
+    </div>
+    <div class="btn-grp">
+      <%= f.submit "Tiếp tục", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

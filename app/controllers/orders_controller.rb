@@ -12,6 +12,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-
+    redirect_to controller: "order_confirmation", action: "index", order_id: 1
   end
 end

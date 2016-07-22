@@ -1,0 +1,76 @@
+<div class="container-fluid order-confirmation tickets-buy">
+  <div class="row tickets-header">
+    <div class="col-xs-12 col-md-11 col-md-offset-1">
+      <h3> <%= @event.name %> </h3>
+      <div class="pull-left">
+        <%= fa_icon 'map-marker' %>
+      </div>
+      <div class="venue-details">
+       <%= @event.venue.name %>
+       <br/>
+       <%= @event.venue.full_address %>
+      </div>
+
+      <div class="pull-left">
+        <%= fa_icon 'clock-o' %>
+      </div>
+      <div class="time-details">
+        <%= @event.starts_at.strftime('%A, %d %b %Y %l:%M %p') %>
+      </div>
+    </div>
+  </div>
+  <div class="row thankyou">
+    <div class="col-sm-8 col-sm-offset-2 wrap">
+      <div class="text-center">
+        <h2>Đặt vé thành công</h2>
+        <p class="thankyou-text">Cảm ơn bạn đã đặt vé tại TicketBox.vn</p>
+      </div>
+      <div class="row">
+        <div class="text-center">
+          <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4">
+            <img class="booking-success-img" src="/assets/booking-successful.png">
+          </div>
+        </div>
+      </div>
+      <div class="order-title">Thông tin đơn hàng</div>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Mã đơn hàng</td>
+            <td>CDKFH</td>
+          </tr>
+          <tr>
+            <td>Ngày đặt vé</td>
+            <td>23/07/2016 lúc 19:20</td>
+          </tr>
+          <tr>
+            <td>Thông tin đặt vé</td>
+            <td>4 x Vé vip A, 1 x Vé vip C</td>
+          </tr>
+          <tr>
+            <td>Tổng tiền</td>
+            <td>3,500,000 VND</td>
+          </tr>
+          <tr>
+            <td>Hình thức thanh toán</td>
+            <td>
+              <p><strong>Giao vé thu tiền tận nhà</strong></p>
+              <p>Vé của bạn sẽ được giao đến địa chỉ: <strong>Ok 123, Quận 1, Hồ Chí Minh</strong> trong vòng 02 - 05 ngày.</p>
+              <p>Bạn sẽ được gọi điện thoại báo trước khi vé được chuyển đến.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <p>Chúc bạn có một sự kiện tuyệt vời cùng <strong><%= @event.name %></strong></p>
+        <p>Thân,</p>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="btn-grp">
+      <%= link_to "Quay lại trang chủ", root_path, class: "btn btn-blue" %>
+    </div>
+  </div>
+</div>
+
