@@ -1,11 +1,12 @@
 FactoryGirl.define do
   factory :order do
-    order_number "MyString"
+
     event nil
-    name "MyString"
-    address "MyString"
-    email "MyString"
-    phone "MyString"
+
+    name "Leo Le"
+    address "231 Hoang Hoa Tham"
+    email "abc@gmail.com"
+    phone "0933554440"
     total_price "9.99"
   end
 end

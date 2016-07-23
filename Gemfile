@@ -41,7 +41,8 @@ gem 'font-kit-rails', '~> 1.2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'simplecov', :require => false, :group => :test
+gem 'simplecov', require: false, group: :test
+gem 'database_cleaner', '~> 1.5', '>= 1.5.3', group: :test
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

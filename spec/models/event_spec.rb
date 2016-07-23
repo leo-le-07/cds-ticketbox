@@ -5,6 +5,7 @@ RSpec.describe Event, type: :model do
 
   it "is valid with correct owner, name, vanue, category, starts, ends, description" do
     expect(valid_event).to be_valid
+    expect(valid_event.save).to be true
   end
 
   it "is invalid without starts at" do
@@ -59,4 +60,18 @@ RSpec.describe Event, type: :model do
     event.valid?
     expect(event.errors[:starts_at]).to include "starts_at can't be in past"
   end
+
+  describe ".draft?" do
+    it "return true when status is draft" do
+      valid_event.save
+      expect(valid_event.draft?).to be true
+    end
+
+    it "return false when status is not draft" do
+      valid_event.status = 2
+      valid_event.save
+      expect(valid_event.draft?).to be false
+    end
+  end
+
 end
