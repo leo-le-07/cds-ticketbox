@@ -1,6 +1,11 @@
 class Event < ActiveRecord::Base
   before_save {self.status ||= 1}
 
+  # include PgSearch
+  # pg_search_scope :name_search,
+  #                 :against => :name,
+  #                 :ignoring => :accents
+
   belongs_to :venue
   belongs_to :category
   belongs_to :owner, foreign_key: 'owner_id', class_name: 'User'
