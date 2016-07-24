@@ -34,7 +34,6 @@ gem 'quiet_assets'
 gem 'better_errors', group: :development
 gem 'font-awesome-rails'
 gem 'font-kit-rails', '~> 1.2.0'
-gem 'pg_search', '~> 1.0', '>= 1.0.6'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
