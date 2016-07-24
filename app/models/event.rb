@@ -13,15 +13,13 @@ class Event < ActiveRecord::Base
   has_many :ticket_types
   has_many :orders
 
-  validates_presence_of :extended_html_description, :venue, :category, :starts_at, :ends_at, :owner, :name
+  validates_presence_of :extended_html_description, :venue, :category, :owner, :name
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
   validate :ends_at_is_after_starts_at
   validate :starts_at_is_not_in_past
 
   accepts_nested_attributes_for :venue
-  attr_accessor :venue_attributes
   accepts_nested_attributes_for :category
-  attr_accessor :category_attributes
 
   def draft?
     status == 1
@@ -51,6 +49,10 @@ class Event < ActiveRecord::Base
 
   def self.unaccent(str)
     str.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s if str
+  end
+
+  def event_image_url
+    hero_image_url && !hero_image_url.empty? ? hero_image_url : "https://unsplash.it/600/300?random"
   end
 
   private

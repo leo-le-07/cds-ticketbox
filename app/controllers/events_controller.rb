@@ -13,19 +13,17 @@ class EventsController < ApplicationController
     @section = "event-info"
     @event = current_user.events.find(params[:id])
     @categories = Category.all
+    @regions = Region.all
   end
 
   def update
     @event = Event.find(params[:id])
-    @event.category.update(event_params[:category_attributes])
-    @event.venue.update(event_params[:venue_attributes])
-    @event.venue.region.update(event_params[:venue_attributes][:region_attributes])
-    @event.starts_at = get_date("starts_at", params[:event])
-    @event.ends_at = get_date("ends_at", params[:event])
     @event.save
     if @event.update(event_params)
+      flash[:success] = "Cập nhật thành công"
       redirect_to @event
     else
+      flash.now[:error] = @event.errors.full_messages.to_sentence
       render action: 'edit'
     end
   end
@@ -37,16 +35,12 @@ class EventsController < ApplicationController
     @event.venue.region = Region.first
     @event.category = Category.first
     @categories = Category.all
+    @regions = Region.all
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.category = Category.find(event_params[:category_attributes][:id])
-    @event.venue = Venue.new(name: event_params[:venue_attributes][:name], full_address: event_params[:venue_attributes][:full_address], region_id: event_params[:venue_attributes][:region_attributes][:id])
-    @event.starts_at = get_date("starts_at", params[:event])
-    @event.ends_at = get_date("ends_at", params[:event])
-    @event.venue.save
-    @event.venue_id = @event.venue.id
+    @event = current_user.events.new(event_params)
+    # @event.build_venue
     @event.save
     byebug
     redirect_to @event
@@ -58,7 +52,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:name, :hero_image_url, :extended_html_description, venue_attributes: [:name, :full_address, region_attributes: [:id]], category_attributes: [:id])
+      params.require(:event).permit(:name, :hero_image_url, :extended_html_description, :starts_at, :ends_at, :category_id, venue_attributes: [:name, :full_address, :region_id])
     end
 
     def get_date(date_name, hash)

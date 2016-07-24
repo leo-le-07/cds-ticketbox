@@ -1,5 +1,5 @@
 <div class="cover-event">
-  <img class="card-img-top" src="<%= event.hero_image_url %>">
+  <img class="card-img-top" src="<%= event.event_image_url %>">
 </div>
 <% if event.draft? %>
   <div class="">
@@ -26,12 +26,11 @@
         <%= v.text_field :full_address, class: "form-control", placeholder: "" %>
       </fieldset>
 
-      <%= v.fields_for :region do |r| %>
-        <fieldset class="form-group">
-          <%= r.label :id, "Vùng" %>
-          <%= r.select(:id, options_for_select(Region.all.collect {|region| [region.name, region.id]}, event.venue.region.id), {}, { class: "form-control"}) %>
-        </fieldset>
-      <% end %>
+      <fieldset class="form-group">
+        <%= v.label :region_id, "Vùng" %>
+        <br>
+        <%= v.select(:region_id, options_from_collection_for_select(@regions, :id, :name, event.venue.region.id), {}, { class: "form-control"}) %>
+      </fieldset>
     <% end %>
     <fieldset class="form-group" style="width: 49%; float: left;">
       <%= f.label :starts_at, "Thời gian bắt đầu" %>
@@ -43,12 +42,11 @@
       <br>
       <%= f.datetime_select :ends_at, class:"form-control" %>
     </fieldset>
-    <%= f.fields_for :category do |c| %>
-      <fieldset class="form-group">
-        <%= c.label :id, "Loại sự kiện" %>
-        <%= c.select(:id, options_from_collection_for_select(@categories, :id, :name, event.category.id), {}, { class: "form-control"}) %>
-      </fieldset>
-    <% end %>
+    <fieldset class="form-group">
+      <%= f.label :category_id, "Loại sự kiện" %>
+      <br>
+      <%= f.select(:category_id, options_from_collection_for_select(@categories, :id, :name, event.category.id), {}, { class: "form-control"}) %>
+    </fieldset>
     <fieldset class="form-group">
       <%= f.label :extended_html_description, "Mô tả thông tin sự kiện" %>
       <%= f.text_area :extended_html_description, class: "form-control", placeholder: "", rows: 10%>
