@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
   get 'event/search' => 'events#search'
+  get 'event/publish' => 'events#publish'
 
   resources :users do
     resources :events

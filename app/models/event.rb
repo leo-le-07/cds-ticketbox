@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  before_create {self.status ||= 1}
+  before_create {status ||= 1}
   before_create :unaccent_fields
 
   # include PgSearch
@@ -41,9 +41,9 @@ class Event < ActiveRecord::Base
 
   def self.search_by_name(event_name)
     if event_name && !event_name.empty?
-      Event.where("unaccent_name ILIKE ? and starts_at >= ?", "%#{self.unaccent(event_name)}%", DateTime.now).order("starts_at ASC, unaccent_name ASC")
+      Event.where("unaccent_name ILIKE ? and starts_at >= ? and status = 2", "%#{self.unaccent(event_name)}%", DateTime.now).order("starts_at ASC, unaccent_name ASC")
     else
-      Event.where("starts_at >= ?", DateTime.now).order("starts_at ASC, unaccent_name ASC")
+      Event.where("starts_at >= ? and status = 2", DateTime.now).order("starts_at ASC, unaccent_name ASC")
     end
   end
 

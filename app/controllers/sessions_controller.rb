@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = UserLogin.new.login(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Chào mừng bạn đã trở lại"
+      flash[:success] = "Chào mừng bạn đã trở lại"
       redirect_to root_path
     else
       flash[:notice] = "Email hoặc mật khẩu không chính xác"
