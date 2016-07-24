@@ -1,8 +1,8 @@
 <div class="event">
   <div class="slide-bar">
-    <%= render partial: 'slide_bar', locals: {event: @event} %>
+    <%= render partial: 'slide_bar', locals: {event: @event, section: @section} %>
   </div>
   <div class="body">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: {event: @event} %>
   </div>
 </div>

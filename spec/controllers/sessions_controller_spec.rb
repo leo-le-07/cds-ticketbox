@@ -3,16 +3,17 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
 
   describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+    let(:user) {FactoryGirl.create :user}
+    it "login success with correct email and password" do
+      get :create, password: user.password, email: user.email
+      expect(response).to redirect_to root_path
     end
   end
 
   describe "GET #destroy" do
-    it "returns http success" do
+    it "logout success" do
       get :destroy
-      expect(response).to have_http_status(:success)
+      expect(response).to render_template 'new'
     end
   end
 

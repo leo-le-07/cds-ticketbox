@@ -8,12 +8,30 @@
   </div>
 </div>
 <div class="container-fluid events-list">
+  <% if @events.empty? %>
+    <div class="row" style="height: 100vh;text-align: center;padding-top: 50px;">
+      <div class="col-md-12">
+        <h1>Không tìm thấy kết quả</h1>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-md-12" style="font-style: italic;">
+        <p>Tìm thấy <%= @events.size %> kết quả</p>
+      </div>
+    </div>
     <% @events.in_groups_of(3) do |g| %>
       <div class="row">
         <% g.compact.each do |e| %>
-            <%= render partial: 'card', locals: {event: e} %>
+            <%= render partial: '/home/card', locals: {event: e} %>
         <% end %>
       </div>
     <% end %>
+  <% end %>
+
+  <div class="row text-center">
+    <div class="btn-grp">
+      <%= link_to "Quay lại trang chủ", root_path, class: "btn btn-blue" %>
+    </div>
   </div>
 </div>

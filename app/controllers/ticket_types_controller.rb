@@ -2,6 +2,7 @@ class TicketTypesController < ApplicationController
   before_action :deny_anonymous_user
 
   def index
+    @section = "ticket-info"
     @event = Event.find(params[:event_id])
     @ticket_types = @event.ticket_types
   end

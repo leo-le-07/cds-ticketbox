@@ -21,7 +21,11 @@
         </li>
       <% end %>
       <li class="nav-item">
-        <%= link_to "Tạo sự kiện", new_event_path, class: "nav-link btn btn-primary" %>
+        <% if current_user %>
+          <%= link_to "Tạo sự kiện", new_user_event_path(current_user), class: "nav-link btn btn-primary" %>
+        <% else %>
+          <%= link_to "Tạo sự kiện", login_path, class: "nav-link btn btn-primary" %>
+        <% end %>
       </li>
     </ul>
     <% if current_user %>

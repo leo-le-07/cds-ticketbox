@@ -26,14 +26,12 @@
           <th> Loại vé </th>
           <th> Đơn giá </th>
           <th> Số lượng </th>
-          <th> Thành tiền </th>
-
           <%= f.fields_for :order_details do |od| %>
             <tr>
+              <%= od.hidden_field :ticket_type_id, value: od.object.ticket_type.id %>
               <td><%= od.label :name, od.object.ticket_type.name %></td>
               <td><%= od.label :price, format_currency(od.object.price) %></td>
               <td><%= od.text_field :quantity %></td>
-              <td><%= od.label :total_price, od.object.total_price %></td>
             </tr>
           <% end %>
         </table>

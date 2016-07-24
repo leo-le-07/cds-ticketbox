@@ -1,6 +1,7 @@
 class OrderConfirmationController < ApplicationController
   def index
-    @event = Event.find(1)
+    @event = Event.find(params[:event_id])
+    @order = Order.find(params[:order_id])
   end
 
   def show

@@ -74,4 +74,24 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  # describe "#search_by_name" do
+  #   past_event = FactoryGirl.build :event, name: "Việt nam hội nghị 5", starts_at: 22.days.ago, ends_at: 10.days.ago
+  #   past_event.save(validate: false)
+  #   event_a = FactoryGirl.build(:event, name: "Đua xe mở rộng 5", starts_at: 22.days.from_now, ends_at: 25.days.from_now)
+  #   event_b = FactoryGirl.build(:event, name: "Hội code đua 5", starts_at: 23.days.from_now, ends_at: 26.days.from_now)
+
+  #   it "doesn't return past events" do
+  #     events = Event.search_by_name("hoi")
+  #     expect(events).to match_array([event_b])
+  #   end
+
+  #   it "return all current and future events order by starts at time ascending when the name is empty"
+
+  #   it "return "
+
+  #   it "return events which have name include name search"
+
+  #   it "return empty when no events name match name search"
+  # end
+
 end

@@ -53,6 +53,8 @@ group :development, :test do
   gem 'guard-rspec', '~> 4.7', '>= 4.7.2'
   gem 'guard-livereload', '~> 2.5'
   gem "factory_girl_rails"
+  gem "faker"
+  gem 'capybara', '~> 2.7', '>= 2.7.1'
 end
 
 group :development do

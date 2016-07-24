@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'signup' => 'users#new'
+  get 'event/search' => 'events#search'
 
   resources :users do
     resources :events

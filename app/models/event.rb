@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-  before_save {self.status ||= 1}
+  before_create {self.status ||= 1}
+  before_create :unaccent_fields
 
   # include PgSearch
   # pg_search_scope :name_search,
@@ -16,6 +17,11 @@ class Event < ActiveRecord::Base
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
   validate :ends_at_is_after_starts_at
   validate :starts_at_is_not_in_past
+
+  accepts_nested_attributes_for :venue
+  attr_accessor :venue_attributes
+  accepts_nested_attributes_for :category
+  attr_accessor :category_attributes
 
   def draft?
     status == 1
@@ -34,4 +40,26 @@ class Event < ActiveRecord::Base
       errors.add(:starts_at, "starts_at can't be in past")
     end
   end
+
+  def self.search_by_name(event_name)
+    if event_name && !event_name.empty?
+      Event.where("unaccent_name ILIKE ? and starts_at >= ?", "%#{self.unaccent(event_name)}%", DateTime.now).order("starts_at ASC, unaccent_name ASC")
+    else
+      Event.where("starts_at >= ?", DateTime.now).order("starts_at ASC, unaccent_name ASC")
+    end
+  end
+
+  def self.unaccent(str)
+    str.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s if str
+  end
+
+  private
+    def unaccent_fields
+      self.unaccent_name = unaccent(self.name)
+      self.unaccent_description = unaccent(self.extended_html_description)
+    end
+
+    def unaccent(str)
+      str.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s
+    end
 end

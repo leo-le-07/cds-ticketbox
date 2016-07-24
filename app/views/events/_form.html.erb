@@ -12,6 +12,10 @@
       <%= f.label :name, "Tên sự kiện" %>
       <%= f.text_field :name, class: "form-control", placeholder: "" %>
     </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :hero_image_url, "Hình đại diện sự kiện" %>
+      <%= f.text_field :hero_image_url, class: "form-control", placeholder: "" %>
+    </fieldset>
     <%= f.fields_for :venue do |v| %>
       <fieldset class="form-group">
         <%= v.label :name, "Tên địa điểm" %>
@@ -41,19 +45,21 @@
     </fieldset>
     <%= f.fields_for :category do |c| %>
       <fieldset class="form-group">
-        <%= c.label :name, "Loại sự kiện" %>
-        <%= c.select(:id, options_for_select(Category.all.collect {|category| [category.name, category.id]}, event.category.id), {}, { class: "form-control"}) %>
+        <%= c.label :id, "Loại sự kiện" %>
+        <%= c.select(:id, options_from_collection_for_select(@categories, :id, :name, event.category.id), {}, { class: "form-control"}) %>
       </fieldset>
     <% end %>
     <fieldset class="form-group">
       <%= f.label :extended_html_description, "Mô tả thông tin sự kiện" %>
       <%= f.text_area :extended_html_description, class: "form-control", placeholder: "", rows: 10%>
     </fieldset>
-    <div class="btn-grp">
-      <%= link_to nil, class: "custom-btn" do %>
-        Công khai sự kiện
-      <% end %>
-    </div>
+    <% if event.draft? %>
+      <div class="btn-grp">
+        <%= link_to nil, class: "custom-btn" do %>
+          Công khai sự kiện
+        <% end %>
+      </div>
+    <% end %>
     <div class="btn-grp">
       <%= f.submit "Tiếp tục", class: "btn btn-success" %>
     </div>
