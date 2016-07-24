@@ -4,7 +4,7 @@ class TicketTypesController < ApplicationController
   def index
     @section = "ticket-info"
     @event = Event.find(params[:event_id])
-    @ticket_types = @event.ticket_types
+    @ticket_types = @event.ticket_types.where("status = 1")
   end
 
   def new
@@ -14,7 +14,7 @@ class TicketTypesController < ApplicationController
 
   def edit
     @event = Event.find(params[:event_id])
-    @ticket_type = @event.ticket_types.find(params[:id])
+    @ticket_type = @event.ticket_types.where("id = ? AND status = 1", params[:id]).first
   end
 
   def update
@@ -38,7 +38,8 @@ class TicketTypesController < ApplicationController
   def destroy
     @event = Event.find(params[:event_id])
     ticket_type = TicketType.find(params[:id])
-    ticket_type.destroy
+    ticket_type.status = -1
+    ticket_type.save
     redirect_to event_ticket_types_path(@event)
   end
 
