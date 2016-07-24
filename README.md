@@ -8,7 +8,7 @@ Time spent: **25** hours
 
 URL: **https://sleepy-badlands-33423.herokuapp.com/**
 
-SimpleCov Test Coverage: **Insert percentage or link to report here**
+SimpleCov Test Coverage: **90.24%**
 
 ## User Stories
 
