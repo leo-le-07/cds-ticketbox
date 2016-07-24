@@ -40,6 +40,7 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.new(event_params)
+    @event.status = 1
     if @event.save
       redirect_to event_ticket_types_path(@event)
     else
