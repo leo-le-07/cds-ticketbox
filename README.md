@@ -6,7 +6,7 @@ Submitted by: **Leo Le**
 
 Time spent: **25** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://sleepy-badlands-33423.herokuapp.com/**
 
 SimpleCov Test Coverage: **Insert percentage or link to report here**
 
